@@ -1,0 +1,20 @@
+# Direct runtime dependencies. Compile one CPU-only lock per Linux architecture:
+# uv pip compile requirements.in --python-platform x86_64-unknown-linux-gnu \
+#   --python-version 3.12 --torch-backend cpu --emit-index-url \
+#   --output-file requirements-linux-amd64.lock
+# uv pip compile requirements.in --python-platform aarch64-unknown-linux-gnu \
+#   --python-version 3.12 --torch-backend cpu --emit-index-url \
+#   --output-file requirements-linux-arm64.lock
+tiktoken
+pypdf
+sentence-transformers
+chromadb
+rank-bm25
+openai
+python-dotenv
+fastapi>=0.115,<1
+uvicorn>=0.32,<1
+ragas>=0.4.2,<0.5
+
+# Ragas 0.4 imports the legacy VertexAI chat-model module removed in 0.4.x.
+langchain-community==0.3.31
